@@ -1,0 +1,39 @@
+<div class="container">
+    <div class="card">
+        <h4 class="card-header">Login</h4>
+        <div class="card-body">
+            <form  #form="ngForm" (ngSubmit)="onSubmit(form)">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input id="username" name="username" class="form-control"
+                    [(ngModel)]="loginForm.username"
+                    required #usernameField="ngModel"
+                    [ngClass]="{'is-invalid':form.submitted && usernameField.invalid}"
+                    />
+                    <div *ngIf="form.submitted && usernameField.invalid" class="invalid-feedback">
+                        <div>Username is required</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input id="password" name="password" class="form-control"
+                    type="password"
+                    [(ngModel)]="loginForm.password"
+                    required #passwordField="ngModel"
+                    [ngClass]="{'is-invalid':form.submitted && passwordField.invalid}"/>
+                    <div *ngIf="form.submitted && passwordField.invalid" class="invalid-feedback">
+                        <div>Password is required</div>
+                    </div>
+                </div>
+                
+                    <div class="form-group">
+                            <button class="btn btn-primary">Login</button>
+                            <a href="" class="btn btn-link">Not a user?</a>
+                    </div>
+                
+            </form>
+        </div>
+        
+    </div>
+</div>
+<h3>{{form.value | json}}</h3>
